@@ -2,6 +2,9 @@
   :projects:
     :project_1:
       :api_key: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      :host: ""
+      :query: ""
+      :env: ""
     :project_2:
       :api_key: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   :base_uri: "https://errbit.example.com"
