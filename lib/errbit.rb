@@ -9,6 +9,9 @@ class Errbit
     @api_key     = options[:api_key]
     @base_uri    = options[:base_uri]
     @date_format = options[:date_format]
+    @query       = options[:query]
+    @env         = options[:env]
+    @host        = options[:host]
     @response    = parse URI.parse(errbit_path).read
   end
 
@@ -24,7 +27,7 @@ class Errbit
   private
 
   def name
-    response[:name]
+    response[:app]
   end
 
   def status
@@ -36,7 +39,7 @@ class Errbit
   end
 
   def errors
-    response[:unresolved_errors]
+    count(response[:notices])
   end
 
   def parse(data)
@@ -44,7 +47,7 @@ class Errbit
   end
 
   def errbit_path
-    "#{base_uri}/api/v1/stats/app?api_key=#{api_key}"
+    "#{base_uri}/api/v1/errors/app?api_key=#{api_key}&query=#{query}&env=#{env}&host=#{host}"
   end
 
 end
